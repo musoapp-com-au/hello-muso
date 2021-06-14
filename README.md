@@ -48,7 +48,7 @@ Each task is just a prompt, at the end of the project, as long as you meet the a
 
 # Getting Started
 
-Just clone this repo into your own workspace. When you're ready to submit, just send us a PR
+Just fork this repo into your own account. When you're ready to submit, just send us a PR
 
 # FAQ
 
