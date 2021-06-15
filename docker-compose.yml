@@ -1,0 +1,6 @@
+version: "3.8"
+services:
+    data: 
+        image: mongo:4.0.4
+        ports:
+            - 37521:27017
