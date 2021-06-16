@@ -2,3 +2,5 @@
 .vscode/launch.json
 **/dist/**
 **/.DS_Store
+**.env
+**.env.test
