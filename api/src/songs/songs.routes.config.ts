@@ -1,5 +1,5 @@
 import {CommonRoutesConfig} from '../common/common.routes.config';
-import express, {Request, Response} from 'express';
+import express from 'express';
 import SongsController from './songs.controller';
 
 export class SongRoutes extends CommonRoutesConfig {
