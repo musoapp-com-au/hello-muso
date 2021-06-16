@@ -10,6 +10,12 @@ class SongsDao {
 
     Song = mongooseDatastore.getMongoose().model('Songs', this.songSchema);
 
+    async getSongs() {
+        return this.Song.find().exec();
+    }
+
 }
+
+
 
 export default new SongsDao();

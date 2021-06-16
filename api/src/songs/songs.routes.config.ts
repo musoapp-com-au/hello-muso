@@ -1,17 +1,18 @@
 import {CommonRoutesConfig} from '../common/common.routes.config';
-import express from 'express';
+import express, {Request, Response} from 'express';
+import SongsController from './songs.controller';
 
 export class SongRoutes extends CommonRoutesConfig {
+
     constructor(app: express.Application) {
         super(app, 'SongRoutes');
     }
 
     configureRoutes() {
 
-        this.app.route('/songs')
-            .get((req: express.Request, res: express.Response) => {
-                res.status(200).send(`List of all songs`);
-            })
+        this.app
+            .route('/songs')
+            .get(SongsController.listSongs)
 
 
         return this.app;
