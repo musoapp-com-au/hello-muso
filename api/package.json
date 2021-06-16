@@ -1,0 +1,16 @@
+{
+  "name": "songs-api",
+  "version": "1.0.0",
+  "description": "API for management of song titles",
+  "main": "src/index.js",
+  "repository": "https://github.com/github:jtango18/hello-muso",
+  "author": "JT",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "scripts": {
+    "start": "node .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
