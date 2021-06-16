@@ -4,7 +4,8 @@ class MongooseDatastore {
 
 
     private mongooseOptions = {
-        useNewUrlParser: true
+        useNewUrlParser: true,
+        useUnifiedTopology: true
     };
 
     constructor(){
