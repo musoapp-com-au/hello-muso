@@ -6,6 +6,12 @@ class SongsController{
         const songs = await songsService.list();
         res.status(200).send(songs);
     }
+
+    async createSong(req: express.Request, res: express.Response){
+        // TODO: Hypermedia here - return HATEOAS object
+        const songId = await songsService.create(req.body.title);
+        res.status(201).send({ id: songId });
+    }
 }
 
 export default new SongsController();

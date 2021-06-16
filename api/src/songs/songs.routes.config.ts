@@ -13,7 +13,7 @@ export class SongRoutes extends CommonRoutesConfig {
         this.app
             .route('/songs')
             .get(SongsController.listSongs)
-
+            .post(SongsController.createSong)
 
         return this.app;
     }
