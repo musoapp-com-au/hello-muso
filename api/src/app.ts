@@ -24,7 +24,8 @@ app.get('/', (req: express.Request, res: express.Response) => {
 
 
 server.listen(port, () => {
-    // tslint:disable-next-line:no-console
+
     // Single exception to tslint so we can see that server has started
+    // tslint:disable-next-line:no-console
     console.log(runningMessage)
 })
