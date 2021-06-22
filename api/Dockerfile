@@ -3,3 +3,5 @@ WORKDIR /usr/app
 COPY . .
 RUN yarn && yarn run build
 EXPOSE 3000
+
+#TODO: Add proxy/load balancing - nginx
