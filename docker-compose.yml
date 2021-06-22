@@ -3,6 +3,7 @@ services:
     api:
         build: ./api
         restart: always
+        container_name: "muso-api"
         command: yarn run start
         ports: 
             - 3000:3000
@@ -10,7 +11,14 @@ services:
             - data
     data: 
         image: mongo:4.0.4
-        restart: always
-        container_name: "mongo"
-        ports:
-            - 27017:27017
+        container_name: "muso-data"
+        command: mongod --port 37019
+        environment: 
+            MONGO_INITDB_DATABASE: $SONGS_DB_NAME
+            SONGS_DB_NAME: $SONGS_DB_NAME
+            API_DB_USER: $API_DB_USER
+            API_DB_PASSWORD: $API_DB_PASSWORD
+        volumes:
+            - "./database/dbInit/user-setup.sh:/docker-entrypoint-initdb.d/user-setup.sh"
+
+
