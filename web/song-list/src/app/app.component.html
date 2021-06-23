@@ -4,7 +4,7 @@
     <label for="new-song">New Song: </label>
     <input id="new-song" #newTitle/>
 
-    <button (click)="addSong(newTitle.value);">
+    <button (click)="addSong(newTitle.value); newTitle.value='';">
         Add Song
     </button>
 </div>
