@@ -7,6 +7,7 @@ if (dotenvResult.error) {
 
 import express from "express";
 import cors from "cors";
+import compression from "compression"
 import * as http from "http";
 
 import { CommonRoutesConfig } from "./common/common.routes.config";
@@ -20,6 +21,7 @@ const routes: CommonRoutesConfig[] = []
 // Configure for JSON based payloads
 app.use(express.json());
 app.use(cors());
+app.use(compression());
 
 // Add song routes
 routes.push(new SongRoutes(app))
