@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
   ngOnInit(){
     
     this.dataService.getSongs().subscribe((data: Song[]) => {
-      console.log(data);
+      console.log(`Received ${data.length} songs`);
       this.songs = data;
     } );
   }
