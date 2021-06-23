@@ -5,7 +5,7 @@ services:
         restart: always
         container_name: "muso-web"
         ports: 
-            - 8080:80
+            - 80:80
     api:
         build: ./api
         restart: always
