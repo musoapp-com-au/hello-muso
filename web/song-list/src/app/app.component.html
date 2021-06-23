@@ -1,4 +1,16 @@
 <h2>Song List</h2>
+
+<div>
+    <label for="new-song">New Song: </label>
+    <input id="new-song" #newTitle/>
+
+    <button (click)="addSong(newTitle.value);">
+        Add Song
+    </button>
+</div>
+
+
+
 <ul>
  <li *ngFor="let song of songs">
      <span>{{song.title}}</span>

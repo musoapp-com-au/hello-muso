@@ -10,6 +10,8 @@ import {Song} from './song'
 
 export class AppComponent implements OnInit {
 
+  #newTitle: string = ''
+
   songs: Song[] = [];
   title = 'Song List';
   constructor(private dataService: SongDataService) {
@@ -22,6 +24,12 @@ export class AppComponent implements OnInit {
       console.log(`Received ${data.length} songs`);
       this.songs = data;
     } );
+  }
+
+  addSong(title: string): void {
+    title = title.trim();
+    if(!title) { return;}
+    this.dataService.addSong(title);
   }
 
 }
