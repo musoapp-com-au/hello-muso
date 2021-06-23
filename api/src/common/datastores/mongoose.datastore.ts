@@ -8,7 +8,8 @@ class MongooseDatastore {
 
     private mongooseOptions = {
         useNewUrlParser: true,
-        useUnifiedTopology: true
+        useUnifiedTopology: true,
+        useCreateIndex: true
     };
 
     constructor(){
@@ -20,7 +21,7 @@ class MongooseDatastore {
     }
 
     connectWithRetry = () => {
-        
+
         log(`Accessing data base at - ${process.env.DATABASE_URL}`)
         mongoose.connect(process.env.DATABASE_URL, this.mongooseOptions)
         . then(() => {
