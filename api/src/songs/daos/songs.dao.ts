@@ -1,6 +1,6 @@
-import mongooseDatastore from "../../common/datastores/mongoose.datastore";
-
 import debug from 'debug';
+import mongooseDatastore from "../../common/datastores/mongoose.datastore";
+import { CreateSongDto } from "../dtos/create.song.dto";
 
 const log: debug.IDebugger = debug('app:songs-dao');
 
@@ -18,18 +18,18 @@ class SongsDao {
         return this.Song.find().exec();
     }
 
-    async addSong(title: string){
-        const newSong = new this.Song({
-            title
+    async addSong(newSong: CreateSongDto){
+        const songToAdd = new this.Song({
+            title: newSong.title
         })
 
-        await newSong.save();
+        await songToAdd.save();
 
-        log(`Added a new song with title ${newSong._id}`)
+        log(`Added a new song with title ${songToAdd._id}`)
 
         // TODO: Populate hypermedia
         // HACK: This whole thing is dodgy
-        return {id: newSong.id, title: title};
+        return {id: songToAdd.id, title: newSong.title};
     }
 
 }

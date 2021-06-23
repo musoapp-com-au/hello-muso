@@ -9,7 +9,7 @@ class SongsController{
 
     async createSong(req: express.Request, res: express.Response){
         // TODO: Hypermedia here - return HATEOAS object
-        const newSong = await songsService.create(req.body.title);
+        const newSong = await songsService.create(req.body);
         res.status(201).send(newSong);
     }
 }

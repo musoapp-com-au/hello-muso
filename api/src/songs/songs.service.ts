@@ -1,4 +1,5 @@
 import SongsDao from "./daos/songs.dao";
+import { CreateSongDto } from "./dtos/create.song.dto";
 
 class SongsService {
 
@@ -6,8 +7,8 @@ class SongsService {
         return SongsDao.getSongs();
     }
 
-    async create(title: string){
-        return SongsDao.addSong(title);
+    async create(songtoAdd: CreateSongDto){
+        return SongsDao.addSong(songtoAdd);
     }
 }
 
