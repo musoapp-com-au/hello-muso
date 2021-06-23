@@ -11,7 +11,7 @@ export class SongRoutes extends CommonRoutesConfig {
     configureRoutes() {
 
         this.app
-            .route('/songs')
+            .route('/api/songs')
             .get(SongsController.listSongs)
             .post(SongsController.createSong)
 
