@@ -1,5 +1,9 @@
 import mongooseDatastore from "../../common/datastores/mongoose.datastore";
 
+import debug from 'debug';
+
+const log: debug.IDebugger = debug('app:songs-dao');
+
 class SongsDao {
     Schema = mongooseDatastore.getMongoose().Schema
 
@@ -21,9 +25,7 @@ class SongsDao {
 
         await newSong.save();
 
-        // TODO: Add better debug logging to avoid console
-        // tslint:disable-next-line:no-console
-        console.log(newSong._id)
+        log(`Added a new song with title ${newSong._id}`)
 
         // TODO: Populate hypermedia
         // HACK: This whole thing is dodgy

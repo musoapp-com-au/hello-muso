@@ -9,6 +9,9 @@ import express from "express";
 import cors from "cors";
 import compression from "compression"
 import * as http from "http";
+import * as winston from 'winston';
+import * as expressWinston from 'express-winston';
+
 
 import { CommonRoutesConfig } from "./common/common.routes.config";
 import { SongRoutes } from "./songs/songs.routes.config";
@@ -22,6 +25,24 @@ const routes: CommonRoutesConfig[] = []
 app.use(express.json());
 app.use(cors());
 app.use(compression());
+
+//Setup Winston middleware
+const loggerOptions: expressWinston.LoggerOptions = {
+    transports: [new winston.transports.Console()],
+    format: winston.format.combine(
+        winston.format.json(),
+        winston.format.prettyPrint(),
+        winston.format.colorize({ all: true })
+    ),
+};
+
+if (!process.env.DEBUG) {
+    //Turn off metadata if not running in Debug mode.
+    loggerOptions.meta = false; 
+}
+
+//Add logging
+app.use(expressWinston.logger(loggerOptions));
 
 // Add song routes
 routes.push(new SongRoutes(app))

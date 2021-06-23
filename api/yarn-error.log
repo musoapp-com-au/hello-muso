@@ -1,5 +1,5 @@
 Arguments: 
-  /opt/homebrew/Cellar/node/16.3.0/bin/node /opt/homebrew/Cellar/yarn/1.22.10/libexec/bin/yarn.js add -D @types/ compression
+  /opt/homebrew/Cellar/node/16.3.0/bin/node /opt/homebrew/Cellar/yarn/1.22.10/libexec/bin/yarn.js add Winston
 
 PATH: 
   /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/VMware Fusion.app/Contents/Public:/opt/homebrew/bin:/usr/local/opt/ruby/bin:/opt/homebrew/bin:/usr/local/opt/ruby/bin
@@ -14,8 +14,8 @@ Platform:
   darwin arm64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@types%2f: Request "https://registry.yarnpkg.com/@types%2f" returned a 405
-      at Request.params.callback [as _callback] (/opt/homebrew/Cellar/yarn/1.22.10/libexec/lib/cli.js:66997:18)
+  Error: https://registry.yarnpkg.com/Winston: Not found
+      at Request.params.callback [as _callback] (/opt/homebrew/Cellar/yarn/1.22.10/libexec/lib/cli.js:66988:18)
       at Request.self.callback (/opt/homebrew/Cellar/yarn/1.22.10/libexec/lib/cli.js:140749:22)
       at Request.emit (node:events:394:28)
       at Request.<anonymous> (/opt/homebrew/Cellar/yarn/1.22.10/libexec/lib/cli.js:141721:10)
@@ -50,6 +50,7 @@ npm manifest:
       "test": "echo \"Error: no test specified\" && exit 1"
     },
     "devDependencies": {
+      "@types/compression": "^1.7.0",
       "@types/cors": "^2.8.10",
       "@types/express": "^4.17.12",
       "@types/node": "^15.12.2",
@@ -80,6 +81,13 @@ Lockfile:
     dependencies:
       "@types/node" "*"
   
+  "@types/compression@^1.7.0":
+    version "1.7.0"
+    resolved "https://registry.yarnpkg.com/@types/compression/-/compression-1.7.0.tgz#8dc2a56604873cf0dd4e746d9ae4d31ae77b2390"
+    integrity sha512-3LzWUM+3k3XdWOUk/RO+uSjv7YWOatYq2QADJntK1pjkk4DfVP0KrIEPDnXRJxAAGKe0VpIPRmlINLDuCedZWw==
+    dependencies:
+      "@types/express" "*"
+  
   "@types/connect@*":
     version "3.4.34"
     resolved "https://registry.yarnpkg.com/@types/connect/-/connect-3.4.34.tgz#170a40223a6d666006d93ca128af2beb1d9b1901"
@@ -101,7 +109,7 @@ Lockfile:
       "@types/qs" "*"
       "@types/range-parser" "*"
   
-  "@types/express@^4.17.12":
+  "@types/express@*", "@types/express@^4.17.12":
     version "4.17.12"
     resolved "https://registry.yarnpkg.com/@types/express/-/express-4.17.12.tgz#4bc1bf3cd0cfe6d3f6f2853648b40db7d54de350"
     integrity sha512-pTYas6FrP15B1Oa0bkN5tQMNqOcVXa9j4FTFtO8DWI9kppKib+6NJtfTOOLcwxuuYvcX2+dVG6et1SxW/Kc17Q==

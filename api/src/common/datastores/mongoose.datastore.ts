@@ -1,5 +1,9 @@
 import mongoose from 'mongoose'
 
+import debug from 'debug';
+
+const log: debug.IDebugger = debug('app:mongoose-datastore');
+
 class MongooseDatastore {
 
 
@@ -18,12 +22,8 @@ class MongooseDatastore {
 
     connectWithRetry = () => {
 
-        // TODO: Add better debug logging to avoid console
-        // tslint:disable-next-line:no-console
-        console.debug(process.env.DATABASE_URL)
+        log(`Accessing data base at - ${process.env.DATABASE_URL}`)
         mongoose.connect(process.env.DATABASE_URL, this.mongooseOptions)
-
-
     }
 }
 
