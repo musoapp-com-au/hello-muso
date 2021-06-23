@@ -26,7 +26,8 @@ class SongsDao {
         console.log(newSong._id)
 
         // TODO: Populate hypermedia
-        return newSong._id;
+        // HACK: This whole thing is dodgy
+        return {id: newSong.id, title: title};
     }
 
 }

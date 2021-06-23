@@ -19,7 +19,7 @@ export class SongDataService {
     return this.httpClient.get<Song[]>(this.SongListApi)
   }
 
-  public addSong(title: string){
-    console.log(`Adding song: ${title}`);
+  public addSong(newSong: Song): Observable<Song>{
+   return this.httpClient.post<Song>(this.SongListApi, newSong, this.httpOptions)
   }
 }

@@ -19,17 +19,24 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(){
-    
-    this.dataService.getSongs().subscribe((data: Song[]) => {
-      console.log(`Received ${data.length} songs`);
-      this.songs = data;
-    } );
+    this.getSongs();
+  }
+
+  getSongs(): void {
+    this.dataService.getSongs()
+    .subscribe(songs => this.songs = songs);
   }
 
   addSong(title: string): void {
     title = title.trim();
     if(!title) { return;}
-    this.dataService.addSong(title);
+    this.dataService.addSong({title} as Song)
+    .subscribe(newSong =>{
+      console.debug("Added - " + newSong.title)
+      this.songs.push(newSong);
+
+    }
+      )
   }
 
 }
