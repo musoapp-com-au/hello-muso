@@ -1,4 +1,5 @@
 import debug from 'debug';
+import { truncate } from 'fs/promises';
 import mongooseDatastore from "../../common/datastores/mongoose.datastore";
 import { CreateSongDto } from "../dtos/create.song.dto";
 
@@ -15,7 +16,11 @@ class SongsDao {
     Song = mongooseDatastore.getMongoose().model('Songs', this.songSchema);
 
     async getSongs() {
-        return this.Song.find().exec();
+        return await this.Song.find().exec();
+    }
+
+    async removeSongById(songId: string){
+        return this.Song.deleteOne({ _id: songId }).exec();
     }
 
     async addSong(newSong: CreateSongDto){
@@ -31,9 +36,6 @@ class SongsDao {
         // HACK: This whole thing is dodgy
         return {id: songToAdd.id, title: newSong.title};
     }
-
 }
-
-
 
 export default new SongsDao();

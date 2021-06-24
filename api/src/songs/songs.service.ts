@@ -10,6 +10,10 @@ class SongsService {
     async create(songtoAdd: CreateSongDto){
         return SongsDao.addSong(songtoAdd);
     }
+
+    async deleteById (songId: string){
+        return SongsDao.removeSongById(songId)
+    }
 }
 
 export default new SongsService();
