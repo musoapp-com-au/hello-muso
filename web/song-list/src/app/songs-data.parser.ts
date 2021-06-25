@@ -1,21 +1,21 @@
 import { Injectable } from '@angular/core';
-import { Song } from './models/song.model';
-import { SongViewModel } from './models/song.viewModel';
+import { Song, SongList } from './models/song.model';
+import { SongListViewModel, SongViewModel } from './models/song.viewModel';
 
 @Injectable({providedIn: 'root'})
 export class SongDataParser {
 
-    public translateSongs(songs: Array<Song>): SongViewModel[]{
-        return songs.map<SongViewModel>(songToViewModel)
+    public translateSongs(songList: SongList): SongListViewModel{
+        // TODO: Add fault handling in isntance where create doesn't exist.
+        return {
+            songs: songList.songs.map<SongViewModel>(songToViewModel),
+            createSongAction: songList.actions[0].href 
+        }
     }
-
-    // public translateSong(song: Song): SongViewModel {
-    //     return songToViewModel(song);
-    // }
 }
 
 function songToViewModel(song: Song){
-    var deleteActionIndex = song.actions.findIndex(a => a.name === "delete");
+    var deleteActionIndex = song.actions.findIndex(a => a.name === "remove-song");
     return {
         title: song.title,
 

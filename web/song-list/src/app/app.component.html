@@ -12,7 +12,7 @@
 
 
 <ul>
- <li *ngFor="let song of songs">
+ <li *ngFor="let song of songList.songs">
      <span>{{song.title}} - </span> 
      <span *ngIf="song.canDelete"><button (click)="deleteSong(song.deleteAction)">Delete</button></span>
 

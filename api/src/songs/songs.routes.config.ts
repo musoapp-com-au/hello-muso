@@ -16,7 +16,7 @@ export class SongRoutes extends CommonRoutesConfig {
     configureRoutes() {
 
         let songActions: ISongAction[] = [
-            {name: "delete", method: "DELETE", href: `api/songs/${SongIdString}`}
+            {name: "remove-song", method: "DELETE", href: `/api/songs/${SongIdString}`}
         ]
 
         this.app

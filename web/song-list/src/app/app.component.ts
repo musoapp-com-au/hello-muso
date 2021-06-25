@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SongDataService } from './song-data.service';
-import {SongViewModel} from './models/song.viewModel'
+import {SongListViewModel, SongViewModel} from './models/song.viewModel'
 
 @Component({
   selector: 'app-root',
@@ -12,9 +12,14 @@ export class AppComponent implements OnInit {
 
   #newTitle: string = ''
 
-  songs: SongViewModel[] = [];
+  songList: SongListViewModel;
   title = 'Song List';
-  constructor(private dataService: SongDataService) { }
+  constructor(private dataService: SongDataService) { 
+    this.songList = {
+      songs: [],
+      createSongAction: ''
+    }     
+  }
 
   ngOnInit(){
     this.getSongs();
@@ -22,12 +27,12 @@ export class AppComponent implements OnInit {
 
   getSongs(): void {
     this.dataService.getSongs()
-      .subscribe(songs => this.songs = songs);
+      .subscribe(songList => this.songList = songList);
   }
 
   deleteSong(deleteAction: string): void {
     //Hide locally
-    this.songs = this.songs.filter(s => s.deleteAction !== deleteAction)
+    this.songList.songs = this.songList.songs.filter(s => s.deleteAction !== deleteAction)
     this.dataService.deleteSong(deleteAction).subscribe();
   }
 
@@ -36,12 +41,12 @@ export class AppComponent implements OnInit {
   addSong(title: string): void {
     title = title.trim();
     if(!title) { return;}
-    // this.dataService.addSong({title, actions: []})
-    // .subscribe(newSong =>{
-    //   console.debug("Added - " + newSong.title)
-    //   this.songs.push(newSong);
+      this.dataService.addSong(this.songList.createSongAction)
+      .subscribe(newSong =>{
+      console.debug("Added - " + newSong.title)
+      this.songList.songs.push(newSong);
 
-    // })
+    })
   }
 
 }

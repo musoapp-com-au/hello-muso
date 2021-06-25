@@ -1,9 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { SongViewModel } from './models/song.viewModel';
-import {Song } from './models/song.model'
+import { SongListViewModel, SongViewModel } from './models/song.viewModel';
+import {SongList } from './models/song.model'
 import { Observable } from 'rxjs';
-import { map, catchError, tap } from 'rxjs/operators'
+import { map } from 'rxjs/operators'
 import { SongDataParser } from './songs-data.parser';
 
 @Injectable({providedIn: 'root'})
@@ -18,21 +18,24 @@ export class SongDataService {
 
   constructor(private httpClient: HttpClient, private songDataParser: SongDataParser) {  }
 
-  public getSongs(): Observable<SongViewModel[]> {
-    return this.httpClient.get<Song[]>(this.SongListApi)
+  public getSongs(): Observable<SongListViewModel> {
+    return this.httpClient.get<SongList>(this.SongListApi)
     .pipe(map(this.songDataParser.translateSongs))
   }
 
   public deleteSong(deleteAction: string): Observable<SongViewModel>{
     return this.httpClient.delete<SongViewModel>(deleteAction, this.httpOptions);
   } 
+
+
+  public addSong(createAction: string): Observable<SongViewModel>{
+    // TODO: Populate creation object
+    // TODO: Transform returned object.
+    return this.httpClient.post(createAction, {title: "New Song"}, this.httpOptions)
+      .pipe(map( x => {return {
+        title: "a song",
+        canDelete: true,
+        deleteAction: ""
+      }as SongViewModel }))
+  }
 }
-
-
-
-
-
-
-//   public addSong(newSong: Song): Observable<Song>{
-//    return this.httpClient.post<Song>(this.SongListApi, newSong, this.httpOptions)
-//   }

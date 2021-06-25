@@ -13,3 +13,8 @@ export interface SongAction {
     method: string;
     href: string;
 }
+
+export interface SongList {
+    songs: Song[];
+    actions: SongAction[]
+}

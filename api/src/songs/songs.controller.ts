@@ -21,7 +21,17 @@ class SongsController{
         const songs = await songsService.list().
             then((d) => docToDto(d, actions));
 
-        res.status(200).send(songs);
+
+        res.status(200).send( 
+            {songs: songs, 
+            actions: [
+                {
+                    name: "add-song",
+                    method: "POST",
+                    href: req.path.substring(1) //TODO: Remove leading '/' from path - this is a hack for now.
+                }
+            ]
+        });
     }
 
     async removeSong(req: express.Request, res: express.Response){
