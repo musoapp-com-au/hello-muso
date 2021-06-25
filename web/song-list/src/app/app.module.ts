@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
-
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
+import { environment } from 'src/environments/environment';
+import { ApiClientInterceptor } from './apiProvider/api.interceptor';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,10 @@ import { AppComponent } from './app.component';
     BrowserModule,
     HttpClientModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: ApiClientInterceptor, multi: true },
+    { provide: "BASE_API_URL", useValue: environment.apiUrl} 
+  ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 export class SongDataService {
 
   //TODO: Remove hardcoding
-  private SongListApi= "http://localhost:3000/api/songs";
+  private SongListApi= "api/songs";
 
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
