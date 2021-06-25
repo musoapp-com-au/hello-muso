@@ -10,6 +10,9 @@ export class SongRoutes extends CommonRoutesConfig {
         super(app, 'SongRoutes');
     }
 
+    // TODO: Let's change the way we handle routing.
+    // https://bulkan-evcimen.com/using_express_router_instead_of_express_namespace
+
     configureRoutes() {
 
         let songActions: ISongAction[] = [
