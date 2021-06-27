@@ -14,18 +14,22 @@ export class SongDataParser {
     }
 
     public translateSong(song: Song): SongViewModel{
-        console.debug(song.actions[0].href)
         return songToViewModel(song);
     }
 }
 
 function songToViewModel(song: Song){
     var deleteActionIndex = song.actions.findIndex(a => a.name === "remove-song");
+    var editActionIndex = song.actions.findIndex(a => a.name === "edit-song");
+
     return {
         title: song.title,
 
         canDelete: deleteActionIndex >= 0,
-        deleteAction: song.actions[deleteActionIndex].href
+        deleteAction: song.actions[deleteActionIndex].href,
+
+        canEdit: editActionIndex >= 0,
+        editAction: song.actions[editActionIndex].href
     } as SongViewModel
 }
 

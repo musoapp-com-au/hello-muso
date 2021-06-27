@@ -1,0 +1,8 @@
+<!-- CSS Hack during Dev -->
+<div *ngIf="song" style="display: inline-block;"> 
+    <span>{{song.title}} - </span> 
+    <span *ngIf="song.canDelete"><button >Delete</button></span>
+    <span *ngIf="song.canEdit"><button>Edit</button></span>
+</div>
+
+<!-- (click)="deleteSong(song.deleteAction)" -->

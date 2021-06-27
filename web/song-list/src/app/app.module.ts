@@ -5,10 +5,12 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
 import { ApiClientInterceptor } from './apiProvider/api.interceptor';
+import { SongDisplayComponent } from './song-display/song-display.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SongDisplayComponent
   ],
   imports: [
     BrowserModule,

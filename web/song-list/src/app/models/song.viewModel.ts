@@ -5,6 +5,9 @@ export interface SongViewModel {
 
     canDelete: boolean;
     deleteAction: string ;
+
+    canEdit: boolean;
+    editAction: string;
 }
 
 export interface SongListViewModel {
