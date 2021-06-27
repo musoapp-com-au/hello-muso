@@ -9,8 +9,5 @@
                 <span>{{song.title}} - </span> 
                 <span *ngIf="song.canDelete"><button (click)="deleteSong(song.deleteAction)">Delete</button></span>
                 <span *ngIf="song.canEdit"><button (click)="enterEditMode()">Edit</button></span>
-        </ng-template>   
-
+        </ng-template>
 </span>
-
-
