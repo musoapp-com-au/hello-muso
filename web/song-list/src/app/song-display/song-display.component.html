@@ -1,17 +1,21 @@
 <span *ngIf="song">
     <span *ngIf="isEditing; then editBlock else displayBlock"></span>
         <ng-template #editBlock>
-            <span><input id="song-title" #newTitle value="{{song.title}}"/></span>
-            <span><button (click)="completeUpdate(song.title, newTitle.value);" >Update</button></span>
-            <span><button (click)="cancelUpdate()">Cancel</button></span>
-        </ng-template>
-        <ng-template #displayBlock>
-            <div class="songDisplay">
-                <span class="title">&#9835; {{song.title}}</span> 
-                <button *ngIf="song.canEdit" (click)="enterEditMode()" class="editButton"><span class="glyph"></span></button>
-                <button *ngIf="song.canDelete" (click)="deleteSong(song.deleteAction)" class="deleteButton"><span class="glyph"></span></button>
-
+            <div class="songContainer">
+                <span class="editGlyph glyph"></span>
+                <input class="titleEdit" id="song-title" #newTitle value="{{song.title}}"/>
+                <button class="updateButton" (click)="completeUpdate(song.title, newTitle.value);"><span class="glyph"></span></button>
+                <button class="cancelButton" (click)="cancelUpdate()"><span class="glyph"></span></button>
+                <hr/>
             </div>
 
+        </ng-template>
+        <ng-template #displayBlock>
+            <div class="songContainer">
+                <span class="listGlyph glyph"></span>
+                <span class="title">{{song.title}}</span> 
+                <button *ngIf="song.canEdit" (click)="enterEditMode()" class="editButton"><span class="glyph"></span></button>
+                <button *ngIf="song.canDelete" (click)="deleteSong(song.deleteAction)" class="deleteButton"><span class="glyph"></span></button>
+            </div>
         </ng-template>
 </span>

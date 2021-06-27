@@ -87,9 +87,10 @@ button:hover {
 	font-weight: normal;
 }
 
-button .glyph{
+.glyph{
 	margin: auto;
 	display: block;
-	width: 30px;
-	height: 30px;
+	width: 29px;
+	height: 29px;
+	background: red;
 }
