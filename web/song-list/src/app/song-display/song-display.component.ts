@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { SongViewModel } from '../models/song.viewModel';
 
 @Component({
@@ -10,10 +10,16 @@ export class SongDisplayComponent implements OnInit {
 
   @Input()song: SongViewModel;
 
+  @Output() deleteRequested = new EventEmitter<string>();
+
   constructor() { 
   }
 
   ngOnInit(): void {
+  }
+
+  deleteSong(deleteAction: string): void {
+    this.deleteRequested.emit(deleteAction);
   }
 
 }

@@ -13,7 +13,7 @@
 
 <ul>
  <li *ngFor="let song of songList.songs">
-     <app-song-display [song]="song"></app-song-display>
+     <app-song-display [song]="song" (deleteRequested)="deleteSong($event)"></app-song-display>
  </li>
 
 </ul>

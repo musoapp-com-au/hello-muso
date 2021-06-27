@@ -1,8 +1,6 @@
 
 <span *ngIf="song"> 
     <span>{{song.title}} - </span> 
-    <span *ngIf="song.canDelete"><button >Delete</button></span>
+    <span *ngIf="song.canDelete"><button (click)="deleteSong(song.deleteAction)">Delete</button></span>
     <span *ngIf="song.canEdit"><button>Edit</button></span>
 </span>
-
-<!-- (click)="deleteSong(song.deleteAction)" -->
