@@ -9,8 +9,6 @@
     </button>
 </div>
 
-
-
 <ul>
  <li *ngFor="let song of songList.songs">
      <app-song-display [song]="song" (deleteRequested)="deleteSong($event)"></app-song-display>

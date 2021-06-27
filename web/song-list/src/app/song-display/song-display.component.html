@@ -1,6 +1,15 @@
+<span *ngIf="song">
+    <span *ngIf="isEditing; then editBlock else displayBlock"></span>
+        <ng-template #editBlock>
+            <span><input id="song-title" #newTitle value="{{song.title}}"/></span>
+            <span><button (click)="completeUpdate(song.title, newTitle.value);" >Update</button></span>
+        </ng-template>
+        <ng-template #displayBlock>
+                <span>{{song.title}} - </span> 
+                <span *ngIf="song.canDelete"><button (click)="deleteSong(song.deleteAction)">Delete</button></span>
+                <span *ngIf="song.canEdit"><button (click)="enterEditMode()">Edit</button></span>
+        </ng-template>   
 
-<span *ngIf="song"> 
-    <span>{{song.title}} - </span> 
-    <span *ngIf="song.canDelete"><button (click)="deleteSong(song.deleteAction)">Delete</button></span>
-    <span *ngIf="song.canEdit"><button>Edit</button></span>
 </span>
+
+
