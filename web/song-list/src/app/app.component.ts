@@ -38,7 +38,8 @@ export class AppComponent implements OnInit {
 
   addSong(title: string): void {
     title = title.trim();
-    if(!title || this.songList.songs.some(s => s.title === title)) { return;} 
+    if(!title || this.songList.songs.some(s => s.title === title)) { return;}
+    // TODO: Currently this silently fails without notifiying the user - need to let use know what has happened 
     
     this.dataService.addSong(this.songList.createSongAction, title)
       .subscribe(newSong =>{
