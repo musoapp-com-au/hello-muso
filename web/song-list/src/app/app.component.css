@@ -1,0 +1,95 @@
+h1 {
+    font-size: 2em;
+    padding-top: 1em;
+    padding-left: 1em;
+    color: rgba(247, 247, 247, 0.89);
+}
+
+.addSong{
+    font-size: 1.2em;
+    padding: 1.81em;
+    padding-top: 1.2em;
+    display: flex;
+    flex-direction: column;
+}
+
+label{
+    color: #2196f3;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    padding-left: 2px;
+}
+
+.addControls {
+    display: grid;
+    grid-template-columns: auto 10px 3em;
+}
+
+#new-song{
+    display: block;
+    width: 100%;
+    background: none;
+    border: none;
+    border-radius: 10px;
+    height: 1.8emem;
+    color: white;
+    font-size: 1.5em;
+    grid-row: 1;
+    grid-column: 0;
+}
+
+::placeholder{
+    color: white;
+}
+
+input:focus::placeholder {
+  color: transparent;
+}
+
+hr {
+    width: 100%;
+    background-color: #2196f3;
+    border: 0;
+    height: 2px;
+    margin: 0px;
+    padding: 0px;
+    grid-row: 2;
+    padding-left: 2px;;
+}
+
+
+.addControls input:focus {
+    outline: none;
+}
+
+.addButton{
+    color: white;
+    background-color: #2196f3;
+    border: 2px solid #2196f3;
+    grid-row: 1;
+    grid-column: 3;
+    transition-duration: 0.4s;
+    font-size: inherit;
+    font-weight: bold;
+    display: block;
+}
+
+.addButton:hover {
+    background: white;
+    color: black;
+    font-weight: normal;
+}
+
+.addButton:disabled{
+    display: hidden;
+}
+
+
+ul{
+    list-style: none;
+}
+li:before{
+    content: '\266B';
+    color: white;
+    margin-right: 1em;
+}

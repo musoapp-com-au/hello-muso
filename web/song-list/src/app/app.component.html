@@ -1,19 +1,28 @@
-<h2>Song List</h2>
+<header>
+    <h1>Song List</h1>
+</header>
+<content>
+    <div class="addSong">
+        <label for="new-song">Add Song</label>
+        <div class="addControls">
+            <input type="text" id="new-song" #newTitle placeholder="Enter a song title" onfocus="this.place"/>
+            <button (click)="addSong(newTitle.value); newTitle.value='';" type="submit" class="addButton">
+                Add
+            </button>
+            <hr/>
+        </div>
+    </div>
+    
+    <ul>
+        <li *ngFor="let song of songList.songs">
+            <app-song-display [song]="song" 
+                (deleteRequested)="deleteSong($event)" 
+                (editCompleted)="editSong($event)"></app-song-display>
+        </li>
+    </ul>
+</content>
+<footer>
 
-<div>
-    <label for="new-song">New Song: </label>
-    <input id="new-song" #newTitle/>
+</footer>
 
-    <button (click)="addSong(newTitle.value); newTitle.value='';">
-        Add Song
-    </button>
-</div>
 
-<ul>
- <li *ngFor="let song of songList.songs">
-     <app-song-display [song]="song" 
-        (deleteRequested)="deleteSong($event)" 
-        (editCompleted)="editSong($event)"></app-song-display>
- </li>
-
-</ul>
