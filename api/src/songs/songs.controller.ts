@@ -25,9 +25,13 @@ class SongsController{
     }
 
     async removeSong(req: express.Request, res: express.Response){
-
         await songsService.deleteById(req.body.id);
         res.status(204).send();
+    }
+
+    async updateSong(req: express.Request, res: express.Response){
+        // TODO: Update song - currently stubbed.
+        res.status(200).send();
     }
 
     async createSong(req: express.Request, res: express.Response, actions: ISongAction[]){

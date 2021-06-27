@@ -16,7 +16,8 @@ export class SongRoutes extends CommonRoutesConfig {
     configureRoutes() {
 
         let songActions: ISongAction[] = [
-            {name: "remove-song", method: "DELETE", href: `/api/songs/${SongIdString}`}
+            {name: "remove-song", method: "DELETE", href: `/api/songs/${SongIdString}`},
+            {name: "edit-song", method: "PUT", href: `/api/songs/${SongIdString}`}
         ]
 
         this.app
@@ -28,9 +29,9 @@ export class SongRoutes extends CommonRoutesConfig {
         const songIdParam: string = "songId";
         this.app.param(songIdParam, SongsMiddleWare.extractSongId);    
         this.app
-            .route(`/api/songs/:${songIdParam}`)
-            .delete(SongsController.removeSong);
-            //TODO: Check if song exists first.
+            .route(`/api/songs/:${songIdParam}`) //TODO: Check if song exists first.      
+            .delete(SongsController.removeSong)       
+            .put(SongsController.updateSong);
 
         return this.app;
     }
