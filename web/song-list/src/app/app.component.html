@@ -7,7 +7,7 @@
         <div class="addControls">
             <input type="text" id="new-song" #newTitle placeholder="Enter a song title" onfocus="this.place"/>
             <button (click)="addSong(newTitle.value); newTitle.value='';" type="submit" class="addButton">
-                Add
+                <span class="glyph"></span>
             </button>
             <hr/>
         </div>

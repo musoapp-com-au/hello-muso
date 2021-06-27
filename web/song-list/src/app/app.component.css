@@ -73,6 +73,14 @@ hr {
     display: hidden;
 }
 
+.addButton .glyph {
+    background: url('/assets/glyphs.png') 241px 28px;
+}
+
+.addButton:hover .glyph {
+    background: url('/assets/glyphs.png') 241px 0px;
+}
+
 ul{
     list-style: none;
     font-size: 1.5em;
