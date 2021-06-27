@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { SongListViewModel, SongViewModel } from './models/song.viewModel';
-import {Song, SongList } from './models/song.model'
+import {Song, SongList, SongUpdateData } from './models/song.model'
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators'
 import { SongDataParser } from './songs-data.parser';
@@ -25,6 +25,11 @@ export class SongDataService {
   public deleteSong(deleteAction: string): Observable<SongViewModel>{
     return this.httpClient.delete<SongViewModel>(deleteAction, this.httpOptions);
   } 
+
+  public updateSong(editAction: string, updateData: SongUpdateData): Observable<SongViewModel>{
+    return this.httpClient.put<Song>(editAction, updateData, this.httpOptions)
+      .pipe(map(this.songDataParser.translateSong));
+  }
 
 
   public addSong(createAction: string, title: string): Observable<SongViewModel>{

@@ -1,5 +1,6 @@
 import SongsDao from "./daos/songs.dao";
 import { CreateSongDto } from "./dtos/create.song.dto";
+import { UpdateSongDto } from "./dtos/update.song.dto";
 
 class SongsService {
 
@@ -13,6 +14,10 @@ class SongsService {
 
     async deleteById (songId: string){
         return SongsDao.removeSongById(songId)
+    }
+
+    async updateSong(songUpdate: UpdateSongDto){
+        return SongsDao.updateSong(songUpdate)
     }
 }
 

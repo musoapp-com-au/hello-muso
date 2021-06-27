@@ -29,9 +29,10 @@ class SongsController{
         res.status(204).send();
     }
 
-    async updateSong(req: express.Request, res: express.Response){
-        // TODO: Update song - currently stubbed.
-        res.status(200).send();
+    async updateSong(req: express.Request, res: express.Response, actions: ISongAction[]){
+        const updatedSong = await songsService.updateSong(req.body)
+            .then((d) => convertDocToDto(d, actions));
+        res.status(200).send(updatedSong);
     }
 
     async createSong(req: express.Request, res: express.Response, actions: ISongAction[]){

@@ -16,3 +16,13 @@ export interface SongList {
     songs: Song[];
     actions: SongAction[]
 }
+
+export interface SongUpdateData{
+    oldTitle: string;
+    newTitle: string;
+}
+
+export interface SongUpdateRequest {
+    updateAction: string,
+    updateData: SongUpdateData
+}

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { SongUpdateRequest } from '../models/song.model';
 import { SongViewModel } from '../models/song.viewModel';
 
 @Component({
@@ -13,7 +14,7 @@ export class SongDisplayComponent implements OnInit {
   @Input()song: SongViewModel;
 
   @Output() deleteRequested = new EventEmitter<string>();
-  // @Output() editCompleted = new EventEmitter<string>();
+  @Output() editCompleted = new EventEmitter<SongUpdateRequest>();
 
   isEditing: boolean;
 
@@ -32,8 +33,19 @@ export class SongDisplayComponent implements OnInit {
   }
 
   completeUpdate(oldTitle: string, newTitle: string): void {
-    console.log(oldTitle);
-    console.log(newTitle);
-  }
+    if(newTitle !== oldTitle)
+    {
+      this.song.title = newTitle;
+      const songUpdateRequest: SongUpdateRequest = {
+        updateAction: this.song.editAction,
+        updateData: {
+          oldTitle: oldTitle,
+          newTitle: newTitle
+        }
 
+      }
+      this.editCompleted.emit(songUpdateRequest)
+    }
+    this.isEditing = false;
+  }
 }

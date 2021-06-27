@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SongDataService } from './song-data.service';
 import {SongListViewModel, SongViewModel} from './models/song.viewModel'
+import { SongUpdateRequest } from './models/song.model';
 
 @Component({
   selector: 'app-root',
@@ -34,6 +35,11 @@ export class AppComponent implements OnInit {
     //Hide locally
     this.songList.songs = this.songList.songs.filter(s => s.deleteAction !== deleteAction)
     this.dataService.deleteSong(deleteAction).subscribe();
+  }
+
+  editSong(updateRequest: SongUpdateRequest): void{
+    this.dataService.updateSong(updateRequest.updateAction, updateRequest.updateData).subscribe();
+    // console.log(`Editing at ${updateRequest.updateAction} with ${updateRequest.updateData}`);
   }
 
   addSong(title: string): void {

@@ -31,7 +31,7 @@ export class SongRoutes extends CommonRoutesConfig {
         this.app
             .route(`/api/songs/:${songIdParam}`) //TODO: Check if song exists first.      
             .delete(SongsController.removeSong)       
-            .put(SongsController.updateSong);
+            .put((req, res) => SongsController.updateSong(req, res, songActions));
 
         return this.app;
     }

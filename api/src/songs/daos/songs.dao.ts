@@ -1,6 +1,7 @@
 import debug from 'debug';
 import mongooseDatastore from "../../common/datastores/mongoose.datastore";
 import { CreateSongDto } from "../dtos/create.song.dto";
+import { UpdateSongDto } from '../dtos/update.song.dto';
 
 const log: debug.IDebugger = debug('app:songs-dao');
 
@@ -20,6 +21,12 @@ class SongsDao {
 
     async removeSongById(songId: string){
         return this.Song.deleteOne({ _id: songId }).exec();
+    }
+
+    async updateSong(updateData: UpdateSongDto){
+        const update = { title: updateData.newTitle};
+        this.Song.updateOne({_id: updateData.id}, update).exec(); // TODO: Optomise by using updateResult and not refetching data.
+        return await this.Song.findById(updateData.id).exec();
     }
 
     async addSong(newSong: CreateSongDto){
