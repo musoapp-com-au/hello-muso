@@ -1,25 +1,15 @@
 import express from 'express';
 import songsService from './songs.service';
-import { SongDto, ISongAction, IdentifierSongAction } from './dtos/song.dto';
-import { Document } from 'mongoose';
+import { ISongAction } from './dtos/song.dto';
+import { convertDocListToDtos, convertDocToDto } from './middleware/songs.mapping';
+import { log } from 'winston';
 
-function docToDto(document: Document<any, any>[], actions: ISongAction[])
-{
-    
-    return document.map(d => d.toObject({ transform: (doc, ret) => 
-        {
-            return {
-                title: ret.title,
-                actions: actions.map(a => new IdentifierSongAction(a, ret._id))
-            } as SongDto;
-        }}));
-}
 
 class SongsController{
 
     async listSongs(req: express.Request, res: express.Response, actions: ISongAction[]){
         const songs = await songsService.list().
-            then((d) => docToDto(d, actions));
+            then((d) => convertDocListToDtos(d, actions));
 
 
         res.status(200).send( 
@@ -40,9 +30,9 @@ class SongsController{
         res.status(204).send();
     }
 
-    async createSong(req: express.Request, res: express.Response){
-        // TODO: Hypermedia here - return HATEOAS object
-        const newSong = await songsService.create(req.body);
+    async createSong(req: express.Request, res: express.Response, actions: ISongAction[]){
+        const newSong = await songsService.create(req.body)
+            .then((d) => convertDocToDto(d, actions));
         res.status(201).send(newSong);
     }
 }

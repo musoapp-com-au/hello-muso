@@ -22,7 +22,7 @@ export class SongRoutes extends CommonRoutesConfig {
         this.app
             .route('/api/songs')
             .get((req, res) => SongsController.listSongs(req, res, songActions))
-            .post(SongsController.createSong);
+            .post((req, res) => SongsController.createSong(req, res, songActions));
 
 
         const songIdParam: string = "songId";

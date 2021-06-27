@@ -9,7 +9,6 @@ class SongsMiddleWare {
             req.body.id = req.params.songId;
             next();
         }
-
 }
 
 export default new SongsMiddleWare();
