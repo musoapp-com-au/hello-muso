@@ -1,6 +1,8 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
 import { Inject, Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import urljoin  from "url-join";
+
 
 //Intercepts HTTP requests and sets a base url based on an environment variable.
 
@@ -11,7 +13,8 @@ export class ApiClientInterceptor implements HttpInterceptor {
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         
-        const apiReq = request.clone({ url: `${this.baseUrl}/${request.url}` });
+        const requestUrl =  urljoin(this.baseUrl, request.url);
+        const apiReq = request.clone({ url: requestUrl });
         return next.handle(apiReq);
     }
 }

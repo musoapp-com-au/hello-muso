@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { SongListViewModel, SongViewModel } from './models/song.viewModel';
-import {SongList } from './models/song.model'
+import {Song, SongList } from './models/song.model'
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators'
 import { SongDataParser } from './songs-data.parser';
@@ -27,14 +27,8 @@ export class SongDataService {
   } 
 
 
-  public addSong(createAction: string): Observable<SongViewModel>{
-    // TODO: Populate creation object
-    // TODO: Transform returned object.
-    return this.httpClient.post(createAction, {title: "New Song"}, this.httpOptions)
-      .pipe(map( x => {return {
-        title: "a song",
-        canDelete: true,
-        deleteAction: ""
-      }as SongViewModel }))
+  public addSong(createAction: string, title: string): Observable<SongViewModel>{
+    return this.httpClient.post<Song>(createAction, {title}, this.httpOptions)
+      .pipe(map(this.songDataParser.translateSong));
   }
 }

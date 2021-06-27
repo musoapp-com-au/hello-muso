@@ -4,8 +4,6 @@
 export interface Song {
     title: string;
     actions: SongAction[];
-    canDelete : string
-
 }
 
 export interface SongAction {

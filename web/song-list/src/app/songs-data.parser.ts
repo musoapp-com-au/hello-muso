@@ -12,6 +12,11 @@ export class SongDataParser {
             createSongAction: songList.actions[0].href 
         }
     }
+
+    public translateSong(song: Song): SongViewModel{
+        console.debug(song.actions[0].href)
+        return songToViewModel(song);
+    }
 }
 
 function songToViewModel(song: Song){

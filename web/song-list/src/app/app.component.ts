@@ -36,16 +36,13 @@ export class AppComponent implements OnInit {
     this.dataService.deleteSong(deleteAction).subscribe();
   }
 
-
-  //TODO: Fix this up with some better song creation/hypermedia logic.
   addSong(title: string): void {
     title = title.trim();
-    if(!title) { return;}
-      this.dataService.addSong(this.songList.createSongAction)
+    if(!title) { return;} // TODO: Check for duplicates
+    
+    this.dataService.addSong(this.songList.createSongAction, title)
       .subscribe(newSong =>{
-      console.debug("Added - " + newSong.title)
-      this.songList.songs.push(newSong);
-
+        this.songList.songs.push(newSong);
     })
   }
 
