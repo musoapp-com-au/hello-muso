@@ -30,10 +30,7 @@ class SongsDao {
         await songToAdd.save();
 
         log(`Added a new song with title ${songToAdd._id}`)
-
-        // TODO: Populate hypermedia
-        // HACK: This whole thing is dodgy
-        return {id: songToAdd.id, title: newSong.title};
+        return await this.Song.findById(songToAdd._id).exec();
     }
 }
 
