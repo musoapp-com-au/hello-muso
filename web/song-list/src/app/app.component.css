@@ -38,6 +38,8 @@ label{
     grid-column: 0;
 }
 
+::-webkit-input-placeholder,
+:-ms-input-placeholder,
 ::placeholder{
     color: white;
 }
