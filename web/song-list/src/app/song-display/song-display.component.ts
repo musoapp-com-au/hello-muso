@@ -32,6 +32,10 @@ export class SongDisplayComponent implements OnInit {
     this.isEditing = true;
   }
 
+  cancelUpdate(): void {
+    this.isEditing = false;
+  }
+
   completeUpdate(oldTitle: string, newTitle: string): void {
     if(newTitle !== oldTitle)
     {

@@ -3,6 +3,7 @@
         <ng-template #editBlock>
             <span><input id="song-title" #newTitle value="{{song.title}}"/></span>
             <span><button (click)="completeUpdate(song.title, newTitle.value);" >Update</button></span>
+            <span><button (click)="cancelUpdate()">Cancel</button></span>
         </ng-template>
         <ng-template #displayBlock>
                 <span>{{song.title}} - </span> 
