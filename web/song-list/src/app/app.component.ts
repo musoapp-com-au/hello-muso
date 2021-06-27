@@ -38,7 +38,7 @@ export class AppComponent implements OnInit {
 
   addSong(title: string): void {
     title = title.trim();
-    if(!title) { return;} // TODO: Check for duplicates
+    if(!title || this.songList.songs.some(s => s.title === title)) { return;} 
     
     this.dataService.addSong(this.songList.createSongAction, title)
       .subscribe(newSong =>{
