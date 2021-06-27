@@ -16,7 +16,8 @@ import { ApiClientInterceptor } from './apiProvider/api.interceptor';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ApiClientInterceptor, multi: true },
-    { provide: "BASE_API_URL", useValue: environment.apiUrl} 
+    { provide: "BASE_API_URL", useValue: environment.apiUrl},
+    { provide: "API_ENTRY", useValue: environment.apiEntry} 
   ],
     bootstrap: [AppComponent]
 })

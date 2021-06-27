@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { SongListViewModel, SongViewModel } from './models/song.viewModel';
 import {SongList } from './models/song.model'
 import { Observable } from 'rxjs';
@@ -9,17 +9,16 @@ import { SongDataParser } from './songs-data.parser';
 @Injectable({providedIn: 'root'})
 export class SongDataService {
 
-  //TODO: Remove hardcoding
-  private SongListApi= "api/songs";
-
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
 
-  constructor(private httpClient: HttpClient, private songDataParser: SongDataParser) {  }
+  constructor(private httpClient: HttpClient, 
+      private songDataParser: SongDataParser,
+      @Inject('API_ENTRY') private songListApi: string) {  }
 
   public getSongs(): Observable<SongListViewModel> {
-    return this.httpClient.get<SongList>(this.SongListApi)
+    return this.httpClient.get<SongList>(this.songListApi)
     .pipe(map(this.songDataParser.translateSongs))
   }
 
