@@ -6,8 +6,12 @@
             <span><button (click)="cancelUpdate()">Cancel</button></span>
         </ng-template>
         <ng-template #displayBlock>
-                <span>{{song.title}} - </span> 
-                <span *ngIf="song.canDelete"><button (click)="deleteSong(song.deleteAction)">Delete</button></span>
-                <span *ngIf="song.canEdit"><button (click)="enterEditMode()">Edit</button></span>
+            <div class="songDisplay">
+                <span class="title">&#9835; {{song.title}}</span> 
+                <button *ngIf="song.canEdit" (click)="enterEditMode()" class="editButton"><span class="glyph"></span></button>
+                <button *ngIf="song.canDelete" (click)="deleteSong(song.deleteAction)" class="deleteButton"><span class="glyph"></span></button>
+
+            </div>
+
         </ng-template>
 </span>

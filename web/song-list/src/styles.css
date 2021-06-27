@@ -59,6 +59,7 @@ table {
 body {
     font-family: Helvetica, "Trebuchet MS", Verdana, sans-serif;
     color: white;
+	font-size: 12pt;
 }
 
 app-root {
@@ -69,3 +70,26 @@ app-root {
     margin-right: auto;
     }
 
+button{
+		transition-duration: 0.4s;
+		display: block;
+		color: white;
+		background-color: #2196f3;
+		border: 2px solid #2196f3;
+		font-size: inherit;
+		font-weight: bold;
+		display: block;
+	}
+
+button:hover {
+	background: white;
+	color: black;
+	font-weight: normal;
+}
+
+button .glyph{
+	margin: auto;
+	display: block;
+	width: 30px;
+	height: 30px;
+}

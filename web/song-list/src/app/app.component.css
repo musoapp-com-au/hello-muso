@@ -65,34 +65,18 @@ hr {
 }
 
 .addButton{
-    color: white;
-    background-color: #2196f3;
-    border: 2px solid #2196f3;
     grid-row: 1;
     grid-column: 3;
-    transition-duration: 0.4s;
-    font-size: inherit;
-    font-weight: bold;
-    display: block;
-}
-
-.addButton:hover {
-    background: white;
-    color: black;
-    font-weight: normal;
 }
 
 .addButton:disabled{
     display: hidden;
 }
 
-
 ul{
     list-style: none;
     font-size: 1.5em;
-    padding-left: 1.2em;;
-}
-li:before{
-    content: '\266B';
-    margin-right: 0.5em;
+    padding-left: 1.2em;
+    padding-right: 1.2em;
+    padding-bottom: 5em;
 }
